@@ -1,0 +1,487 @@
+@columns: 2;
+@margin: 30px;
+
+.gridContainer {
+  position: absolute;
+
+  height: auto;
+  // background-color: rgb(77, 77, 77);
+  margin: auto;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.gridAjust {
+  position: relative;
+  width: calc(100% + @margin );
+  height: 100%;
+  //  background-color:rgba(92, 226, 55, 0.5);
+  margin-bottom: -@margin;
+  overflow: hidden;
+  .clearfix
+}
+
+.boxRegular {
+  position: relative;
+  float: left;
+  width: calc(~"(100% / @{columns}) - (@{margin})");
+  margin-right: @margin;
+  background-color: rgb(45, 36, 128);
+  margin-bottom: @margin;
+  .aspect-ratio(1.3, 1);
+  .clearfix
+}
+
+.boxVertical {
+  position: relative;
+  float: left;
+  width: calc(~"(100% / @{columns}) - (@{margin})");
+  margin-right: @margin;
+  background-color: rgb(60, 141, 58);
+  margin-bottom: @margin;
+  .aspect-ratio-vertical(1.3, 2);
+  .clearfix
+}
+
+.boxHorizontal {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-right: @margin;
+  background-color: rgb(228, 136, 15);
+  margin-bottom: @margin;
+  .aspect-ratio(1.3, 0.5);
+  .clearfix
+}
+
+
+.design-grid-toggles {
+  position: fixed;
+  background-color: black;
+  color: white;
+  font-size: 80px;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+
+
+
+@media screen and (max-width: 413px) {
+
+  @columns: 1;
+  @margin: 20px;
+
+
+
+
+  .design-grid-toggles::before {
+    content: "xsmall";
+  }
+
+
+  .gridContainer {
+    width: calc(100% - 60px);
+  }
+
+
+
+
+  .gridAjust {
+
+    width: calc(100% + @margin );
+    margin-bottom: -@margin;
+
+  }
+
+  .boxRegular {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxVertical {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxHorizontal {
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+
+
+
+
+}
+
+
+@media screen and (min-width: 414px) and (max-width: 649px) {
+
+  @columns: 1;
+  @margin: 20px;
+
+  .design-grid-toggles::before {
+    content: "small";
+  }
+
+  .gridContainer {
+    width: calc(100% - 60px);
+  }
+
+
+
+  .gridAjust {
+
+    width: calc(100% + @margin );
+    margin-bottom: -@margin;
+
+  }
+
+  .boxRegular {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxVertical {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxHorizontal {
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+}
+
+@media screen and (min-width: 650px) and (max-width: 989px) {
+
+  @columns: 1;
+  @margin: 20px;
+
+  .design-grid-toggles::before {
+    content: "medium";
+  }
+
+
+
+  .gridContainer {
+    width: calc(100% - 120px);
+  }
+
+
+
+
+  .gridAjust {
+
+    width: calc(100% + @margin );
+    margin-bottom: -@margin;
+
+  }
+
+  .boxRegular {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxVertical {
+    width: calc(~"(100% / @{columns}) - (@{margin})");
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+
+  .boxHorizontal {
+    margin-right: @margin;
+    margin-bottom: @margin;
+  }
+}
+
+@media screen and (min-width: 990px) and (max-width: 1299px) {
+  .design-grid-toggles::before {
+    content: "LAPTOP - large";
+  }
+
+  .gridContainer {
+    width: calc(100% - 120px);
+  }
+}
+
+
+@media screen and (min-width: 1300px) and (max-width: 1519px) {
+  .design-grid-toggles::before {
+    content: "LAPTOP L - xlarge";
+  }
+
+  .gridContainer {
+    width: 1220px;
+  }
+}
+
+@media screen and (min-width: 1520px) and (max-width: 1899px) {
+  .design-grid-toggles::before {
+    content: "4K - xxlarge";
+  }
+
+  .gridContainer {
+    width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .design-grid-toggles::before {
+    content: "4K - xxxlarge";
+  }
+
+  .gridContainer {
+    width: 1740px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.clearfix() {
+  &:before {
+    content: "";
+    float: left;
+    width: 1px;
+    margin-left: -1px;
+  }
+
+  &:after {
+    /* classic clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+.aspect-ratio(@width, @height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: (@height / @width) * 100%;
+  }
+
+  >.content {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    span:before {
+      content:"@{width}";
+    }
+
+    span:after {
+      content:"@{height}";
+    }
+  }
+}
+
+
+.aspect-ratio-vertical(@width, @height) {
+  position: relative;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ((@height / @width) * 100%);
+    padding-bottom: @margin;
+  }
+
+  >.content {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    span:before {
+      content:"@{width}";
+    }
+
+    span:after {
+      content:"@{height}";
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  width: 100%;
+  height: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
